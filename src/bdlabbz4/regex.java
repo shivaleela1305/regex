@@ -16,26 +16,32 @@ public class regex {
         System.out.println("Enter last name: ");
         String lastName = scan.nextLine();
         
-      //uc3:user email has the @gmail.com 
+        //uc3:user email has the @gmail.com 
         System.out.println("Enter email: ");
         String email = scan.nextLine();
         
+        //uc4:user phone  number with +and country code along with 10-digits number
+        System.out.println("Enter phone number: ");
+        String phoneNumber = scan.nextLine();
 
         // Define regex patterns for validation
         String nameRegex = "^[A-Z][a-zA-Z]{2,}$";
         String emailRegex = "^[A-Za-z0-9+_.-]+@gmail\\.com$";
-
+        String phoneRegex = "^\\+[0-9]{1,3}[0-9]{10}$";
+        
         // Compile the regex patterns
         Pattern namePattern = Pattern.compile(nameRegex);
         Pattern emailPattern = Pattern.compile(emailRegex);
+        Pattern phonePattern = Pattern.compile(phoneRegex);
         
         // Match the input credentials against the regex patterns
         Matcher firstNameMatcher = namePattern.matcher(firstName);
         Matcher lastNameMatcher = namePattern.matcher(lastName);
         Matcher emailMatcher = emailPattern.matcher(email);
+        Matcher phoneMatcher = phonePattern.matcher(phoneNumber);
         
         // Check if the credentials match the required patterns
-        if (firstNameMatcher.matches() && lastNameMatcher.matches() && emailMatcher.matches()) {
+        if (firstNameMatcher.matches() && lastNameMatcher.matches() && emailMatcher.matches() && phoneMatcher.matches()) {
             System.out.println("Valid credentials. field meets the requirements.");
         } else {
             if (!firstNameMatcher.matches()) {
@@ -46,6 +52,9 @@ public class regex {
             }
             if (!emailMatcher.matches()) {
                 System.out.println("Invalid email address. Email should be of the format user@gmail.com.");
+            }
+            if (!phoneMatcher.matches()) {
+                System.out.println("Invalid phone number. It should start with a '+' followed by a country code and then a 10-digit number.");
             }
         }
 	}
