@@ -26,6 +26,7 @@ public class regex {
         
         //uc5:user valid password with 8 character
         //uc6:password having atleast one uppercase character
+        //uc7:password having atleast one numeric character
         System.out.println("Enter password: ");
         String password = scan.nextLine();
 
@@ -33,7 +34,7 @@ public class regex {
         String nameRegex = "^[A-Z][a-zA-Z]{2,}$";
         String emailRegex = "^[A-Za-z0-9+_.-]+@gmail\\.com$";
         String phoneRegex = "^\\+[0-9]{1,3}[0-9]{10}$";
-        String passwordRegex = "^(?=.*[A-Z])(?=.*[a-z\\d])[A-Za-z\\d]{8,}$";
+        String passwordRegex = "^(?=.*[A-Z])(?=.*[a-z\\d])(?=.*\\d)[A-Za-z\\d]{8,}$";
         
         // Compile the regex patterns
         Pattern namePattern = Pattern.compile(nameRegex);
